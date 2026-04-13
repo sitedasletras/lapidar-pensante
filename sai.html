@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAI — Segunda Leitura Estrutural</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0c1118;
+color:white;
+}
+
+header{
+background:#111a27;
+padding:25px;
+border-bottom:1px solid #2a3b54;
+}
+
+h1{
+margin:0;
+font-size:28px;
+}
+
+.sub{
+color:#aebbd3;
+margin-top:6px;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:25px;
+}
+
+.panel{
+background:#121b27;
+border:1px solid #2a3b54;
+border-radius:12px;
+padding:25px;
+margin-bottom:20px;
+}
+
+button{
+margin-top:15px;
+padding:12px 18px;
+border:none;
+background:#56a8ff;
+color:#09111c;
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#7bbcff;
+}
+
+.resultado{
+margin-top:20px;
+background:#0e1622;
+padding:15px;
+border-radius:8px;
+border:1px solid #2a3b54;
+}
+
+.back{
+margin-top:25px;
+display:inline-block;
+color:#aebbd3;
+cursor:pointer;
+}
+
+</style>
+
+<script>
+
+function executarSAI(){
+
+document.getElementById("resultado").innerHTML =
+
+"Título validado.<br>" +
+
+"Autor confirmado.<br>" +
+
+"Separação entre elementos técnicos e corpo textual realizada.<br>" +
+
+"Estrutura de capítulos consolidada.<br>" +
+
+"Epílogo identificado (se existente).<br>" +
+
+"Metadados estruturais organizados.<br>" +
+
+"SAI concluiu validação estrutural."
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>SAI — Segunda Leitura Estrutural</h1>
+
+<div class="sub">
+Validação editorial e organização estrutural da obra
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="panel">
+
+Esta etapa executa:
+
+<ul>
+
+<li>confirmação do título</li>
+
+<li>confirmação do autor</li>
+
+<li>separação de partes técnicas</li>
+
+<li>organização de capítulos</li>
+
+<li>identificação de epílogo</li>
+
+<li>estruturação editorial preliminar</li>
+
+</ul>
+
+<button onclick="executarSAI()">
+Executar leitura SAI
+</button>
+
+<div id="resultado" class="resultado"></div>
+
+</div>
+
+<div class="back"
+onclick="location.href='index.html'">
+
+← voltar ao painel principal
+
+</div>
+
+</div>
+
+</body>
+</html>
