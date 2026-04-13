@@ -10,9 +10,9 @@
 <script src="engine_lp.js"></script>
 <script src="memoria_simbiotica_lp.js"></script>
 <script src="roteador_simbiotico_lp.js"></script>
+<script src="monitor_integracao_lp_lb.js"></script>
 
 <style>
-
 body{
 margin:0;
 font-family:Arial;
@@ -72,6 +72,7 @@ padding:20px;
 border-radius:8px;
 border:1px solid #2a3b54;
 white-space:pre-line;
+line-height:1.6;
 }
 
 .back{
@@ -80,85 +81,64 @@ display:inline-block;
 cursor:pointer;
 color:#aebbd3;
 }
-
 </style>
 
 <script>
-
 function executarCiclo(){
-
 let resultado = LapidarPensanteEngine.executarEntradaManual()
-
-document.getElementById("saida").innerText =
-resultado.join("\n")
-
+document.getElementById("saida").innerText = resultado.join("\n")
 }
-
-
 
 function verificarStatus(){
-
 let status = LapidarPensanteEngine.obterStatusCompleto()
-
-document.getElementById("saida").innerText =
-JSON.stringify(status, null, 2)
-
+document.getElementById("saida").innerText = JSON.stringify(status, null, 2)
 }
-
-
 
 function salvarMemoria(){
-
 let resposta = MemoriaSimbioticaLP.salvar()
-
 document.getElementById("saida").innerText = resposta
-
 }
-
-
 
 function carregarMemoria(){
-
 let resposta = MemoriaSimbioticaLP.carregar()
-
 document.getElementById("saida").innerText =
-resposta + "\n\n" +
-MemoriaSimbioticaLP.ver()
-
+resposta + "\n\n" + MemoriaSimbioticaLP.ver()
 }
-
-
 
 function limparMemoria(){
-
 let resposta = MemoriaSimbioticaLP.limpar()
-
 document.getElementById("saida").innerText = resposta
-
 }
-
-
 
 function encaminharAutomaticamente(){
-
-let resposta =
-RoteadorSimbioticoLP.encaminharAutomaticamente()
-
+let resposta = RoteadorSimbioticoLP.encaminharAutomaticamente()
 document.getElementById("saida").innerText = resposta
-
 }
-
-
 
 function verMapaDestino(){
-
-let mapa =
-RoteadorSimbioticoLP.verMapaDeDestino()
-
+let mapa = RoteadorSimbioticoLP.verMapaDeDestino()
 document.getElementById("saida").innerText = mapa
-
 }
 
+function registrarIntegracao(){
+let resposta = MonitorIntegracaoLPLB.registrarIntegracao()
+document.getElementById("saida").innerText = resposta
+}
+
+function verIntegracao(){
+let resposta = MonitorIntegracaoLPLB.verStatusIntegracao()
+document.getElementById("saida").innerText = resposta
+}
+
+function validarIntegracao(){
+let resposta = MonitorIntegracaoLPLB.validarIntegracao()
+document.getElementById("saida").innerText = resposta
+}
+
+function limparIntegracao(){
+let resposta = MonitorIntegracaoLPLB.limparIntegracao()
+document.getElementById("saida").innerText = resposta
+}
 </script>
 
 </head>
@@ -166,13 +146,10 @@ document.getElementById("saida").innerText = mapa
 <body>
 
 <header>
-
 <h1>Painel do Engine</h1>
-
 <div class="sub">
-Executor simbiótico do Lapidar Pensante com roteamento automático
+Executor simbiótico do Lapidar Pensante com memória, roteamento e monitor de integração
 </div>
-
 </header>
 
 <div class="container">
@@ -211,21 +188,32 @@ Encaminhar automaticamente
 Ver mapa de destino
 </button>
 
+<br>
+
+<button onclick="registrarIntegracao()">
+Registrar integração LP ↔ LB
+</button>
+
+<button onclick="verIntegracao()">
+Ver integração
+</button>
+
+<button onclick="validarIntegracao()">
+Validar integração
+</button>
+
+<button onclick="limparIntegracao()">
+Limpar integração
+</button>
 
 <div id="saida" class="output">
-
 Aguardando execução do núcleo simbiótico...
-
 </div>
 
 </div>
 
-
-<div class="back"
-onclick="location.href='index.html'">
-
+<div class="back" onclick="location.href='index.html'">
 ← voltar ao painel principal
-
 </div>
 
 </div>
