@@ -15,8 +15,10 @@
 <script src="ponte_lp_avaliacao.js"></script>
 <script src="ponte_lp_segunda_linguas.js"></script>
 <script src="ponte_lp_diagramacao.js"></script>
+<script src="ponte_lp_silos.js"></script>
 
 <style>
+
 body{
 margin:0;
 font-family:Arial;
@@ -85,144 +87,383 @@ display:inline-block;
 cursor:pointer;
 color:#aebbd3;
 }
+
 </style>
 
 <script>
+
 function executarCiclo(){
-let resultado = LapidarPensanteEngine.executarEntradaManual()
-document.getElementById("saida").innerText = resultado.join("\n")
+
+let resultado =
+LapidarPensanteEngine.executarEntradaManual()
+
+document.getElementById("saida")
+.innerText = resultado.join("\n")
+
 }
+
+
 
 function verificarStatus(){
-let status = LapidarPensanteEngine.obterStatusCompleto()
-document.getElementById("saida").innerText = JSON.stringify(status, null, 2)
+
+let status =
+LapidarPensanteEngine.obterStatusCompleto()
+
+document.getElementById("saida")
+.innerText = JSON.stringify(status, null, 2)
+
 }
+
+
 
 function salvarMemoria(){
-let resposta = MemoriaSimbioticaLP.salvar()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+MemoriaSimbioticaLP.salvar()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function carregarMemoria(){
-let resposta = MemoriaSimbioticaLP.carregar()
-document.getElementById("saida").innerText =
-resposta + "\n\n" + MemoriaSimbioticaLP.ver()
+
+let resposta =
+MemoriaSimbioticaLP.carregar()
+
+document.getElementById("saida")
+.innerText =
+resposta + "\n\n" +
+MemoriaSimbioticaLP.ver()
+
 }
+
+
 
 function limparMemoria(){
-let resposta = MemoriaSimbioticaLP.limpar()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+MemoriaSimbioticaLP.limpar()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function encaminharAutomaticamente(){
-let resposta = RoteadorSimbioticoLP.encaminharAutomaticamente()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+RoteadorSimbioticoLP.encaminharAutomaticamente()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function verMapaDestino(){
-let mapa = RoteadorSimbioticoLP.verMapaDeDestino()
-document.getElementById("saida").innerText = mapa
+
+let mapa =
+RoteadorSimbioticoLP.verMapaDeDestino()
+
+document.getElementById("saida")
+.innerText = mapa
+
 }
+
+
 
 function registrarIntegracao(){
-let resposta = MonitorIntegracaoLPLB.registrarIntegracao()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+MonitorIntegracaoLPLB.registrarIntegracao()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function verIntegracao(){
-let resposta = MonitorIntegracaoLPLB.verStatusIntegracao()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+MonitorIntegracaoLPLB.verStatusIntegracao()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function validarIntegracao(){
-let resposta = MonitorIntegracaoLPLB.validarIntegracao()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+MonitorIntegracaoLPLB.validarIntegracao()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function limparIntegracao(){
-let resposta = MonitorIntegracaoLPLB.limparIntegracao()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+MonitorIntegracaoLPLB.limparIntegracao()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function enviarParaOKapista(){
-let resposta = PonteLPOKapista.gerarPacoteVisual()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPOKapista.gerarPacoteVisual()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function verPacoteOKapista(){
-let resposta = PonteLPOKapista.verPacoteVisual()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPOKapista.verPacoteVisual()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function validarPacoteOKapista(){
-let resposta = PonteLPOKapista.validarPacote()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPOKapista.validarPacote()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function limparPacoteOKapista(){
-let resposta = PonteLPOKapista.limparPacote()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPOKapista.limparPacote()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function enviarParaAvaliacao(){
-let resposta = PonteLPAvaliacao.gerarPacoteAnalise()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPAvaliacao.gerarPacoteAnalise()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function verPacoteAvaliacao(){
-let resposta = PonteLPAvaliacao.verPacoteAnalise()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPAvaliacao.verPacoteAnalise()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function validarPacoteAvaliacao(){
-let resposta = PonteLPAvaliacao.validarPacoteAnalise()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPAvaliacao.validarPacoteAnalise()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function limparPacoteAvaliacao(){
-let resposta = PonteLPAvaliacao.limparPacoteAnalise()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPAvaliacao.limparPacoteAnalise()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function enviarParaSegundaLinguas(){
-let resposta = PonteLPSegundaLinguas.gerarPacoteTraducao()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPSegundaLinguas.gerarPacoteTraducao()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function verPacoteSegundaLinguas(){
-let resposta = PonteLPSegundaLinguas.verPacoteTraducao()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPSegundaLinguas.verPacoteTraducao()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function validarPacoteSegundaLinguas(){
-let resposta = PonteLPSegundaLinguas.validarPacoteTraducao()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPSegundaLinguas.validarPacoteTraducao()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function limparPacoteSegundaLinguas(){
-let resposta = PonteLPSegundaLinguas.limparPacoteTraducao()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPSegundaLinguas.limparPacoteTraducao()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function enviarParaDiagramacao(){
-let resposta = PonteLPDiagramacao.gerarPacoteDiagramacao()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPDiagramacao.gerarPacoteDiagramacao()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function verPacoteDiagramacao(){
-let resposta = PonteLPDiagramacao.verPacoteDiagramacao()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPDiagramacao.verPacoteDiagramacao()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
 
 function validarPacoteDiagramacao(){
-let resposta = PonteLPDiagramacao.validarPacoteDiagramacao()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPDiagramacao.validarPacoteDiagramacao()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
 
+
+
 function limparPacoteDiagramacao(){
-let resposta = PonteLPDiagramacao.limparPacoteDiagramacao()
-document.getElementById("saida").innerText = resposta
+
+let resposta =
+PonteLPDiagramacao.limparPacoteDiagramacao()
+
+document.getElementById("saida")
+.innerText = resposta
+
 }
+
+
+
+function enviarParaSilos(){
+
+let resposta =
+PonteLPSilos.gerarPacoteSilos()
+
+document.getElementById("saida")
+.innerText = resposta
+
+}
+
+
+
+function verPacoteSilos(){
+
+let resposta =
+PonteLPSilos.verPacoteSilos()
+
+document.getElementById("saida")
+.innerText = resposta
+
+}
+
+
+
+function validarPacoteSilos(){
+
+let resposta =
+PonteLPSilos.validarPacoteSilos()
+
+document.getElementById("saida")
+.innerText = resposta
+
+}
+
+
+
+function limparPacoteSilos(){
+
+let resposta =
+PonteLPSilos.limparPacoteSilos()
+
+document.getElementById("saida")
+.innerText = resposta
+
+}
+
 </script>
 
 </head>
@@ -230,10 +471,16 @@ document.getElementById("saida").innerText = resposta
 <body>
 
 <header>
+
 <h1>Painel do Engine</h1>
+
 <div class="sub">
-Executor simbiótico do Lapidar Pensante com memória, roteamento e pontes de integração
+
+Executor simbiótico do Lapidar Pensante  
+Memória · Roteamento · Integrações · Distribuição editorial
+
 </div>
+
 </header>
 
 <div class="container">
@@ -248,7 +495,7 @@ Executar ciclo completo
 Ver status do sistema
 </button>
 
-<br>
+<br><br>
 
 <button onclick="salvarMemoria()">
 Salvar memória simbiótica
@@ -262,7 +509,7 @@ Carregar memória simbiótica
 Limpar memória simbiótica
 </button>
 
-<br>
+<br><br>
 
 <button onclick="encaminharAutomaticamente()">
 Encaminhar automaticamente
@@ -272,7 +519,7 @@ Encaminhar automaticamente
 Ver mapa de destino
 </button>
 
-<br>
+<br><br>
 
 <button onclick="registrarIntegracao()">
 Registrar integração LP ↔ LB
@@ -290,86 +537,54 @@ Validar integração
 Limpar integração
 </button>
 
-<br>
+<br><br>
 
-<button onclick="enviarParaOKapista()">
-Enviar pacote ao OKapista
-</button>
+<button onclick="enviarParaOKapista()">Enviar pacote ao OKapista</button>
+<button onclick="verPacoteOKapista()">Ver pacote OKapista</button>
+<button onclick="validarPacoteOKapista()">Validar pacote OKapista</button>
+<button onclick="limparPacoteOKapista()">Limpar pacote OKapista</button>
 
-<button onclick="verPacoteOKapista()">
-Ver pacote do OKapista
-</button>
+<br><br>
 
-<button onclick="validarPacoteOKapista()">
-Validar pacote do OKapista
-</button>
+<button onclick="enviarParaAvaliacao()">Enviar pacote à Avaliação</button>
+<button onclick="verPacoteAvaliacao()">Ver pacote Avaliação</button>
+<button onclick="validarPacoteAvaliacao()">Validar pacote Avaliação</button>
+<button onclick="limparPacoteAvaliacao()">Limpar pacote Avaliação</button>
 
-<button onclick="limparPacoteOKapista()">
-Limpar pacote do OKapista
-</button>
+<br><br>
 
-<br>
+<button onclick="enviarParaSegundaLinguas()">Enviar pacote à Segunda Língua(s)</button>
+<button onclick="verPacoteSegundaLinguas()">Ver pacote Segunda Língua(s)</button>
+<button onclick="validarPacoteSegundaLinguas()">Validar pacote Segunda Língua(s)</button>
+<button onclick="limparPacoteSegundaLinguas()">Limpar pacote Segunda Língua(s)</button>
 
-<button onclick="enviarParaAvaliacao()">
-Enviar pacote à Avaliação
-</button>
+<br><br>
 
-<button onclick="verPacoteAvaliacao()">
-Ver pacote da Avaliação
-</button>
+<button onclick="enviarParaDiagramacao()">Enviar pacote à Diagramação</button>
+<button onclick="verPacoteDiagramacao()">Ver pacote Diagramação</button>
+<button onclick="validarPacoteDiagramacao()">Validar pacote Diagramação</button>
+<button onclick="limparPacoteDiagramacao()">Limpar pacote Diagramação</button>
 
-<button onclick="validarPacoteAvaliacao()">
-Validar pacote da Avaliação
-</button>
+<br><br>
 
-<button onclick="limparPacoteAvaliacao()">
-Limpar pacote da Avaliação
-</button>
-
-<br>
-
-<button onclick="enviarParaSegundaLinguas()">
-Enviar pacote à Segunda Língua(s)
-</button>
-
-<button onclick="verPacoteSegundaLinguas()">
-Ver pacote da Segunda Língua(s)
-</button>
-
-<button onclick="validarPacoteSegundaLinguas()">
-Validar pacote da Segunda Língua(s)
-</button>
-
-<button onclick="limparPacoteSegundaLinguas()">
-Limpar pacote da Segunda Língua(s)
-</button>
-
-<br>
-
-<button onclick="enviarParaDiagramacao()">
-Enviar pacote à Diagramação
-</button>
-
-<button onclick="verPacoteDiagramacao()">
-Ver pacote da Diagramação
-</button>
-
-<button onclick="validarPacoteDiagramacao()">
-Validar pacote da Diagramação
-</button>
-
-<button onclick="limparPacoteDiagramacao()">
-Limpar pacote da Diagramação
-</button>
+<button onclick="enviarParaSilos()">Enviar pacote aos Silos</button>
+<button onclick="verPacoteSilos()">Ver pacote Silos</button>
+<button onclick="validarPacoteSilos()">Validar pacote Silos</button>
+<button onclick="limparPacoteSilos()">Limpar pacote Silos</button>
 
 <div id="saida" class="output">
+
 Aguardando execução do núcleo simbiótico...
-</div>
 
 </div>
 
-<div class="back" onclick="location.href='index.html'">
+</div>
+
+<div class="back"
+onclick="location.href='index.html'">
+
 ← voltar ao painel principal
+
 </div>
 
 </div>
