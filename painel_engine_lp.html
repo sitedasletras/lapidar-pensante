@@ -8,6 +8,7 @@
 
 <script src="core_lp.js"></script>
 <script src="engine_lp.js"></script>
+<script src="memoria_simbiotica_lp.js"></script>
 
 <style>
 
@@ -19,11 +20,9 @@ color:white;
 }
 
 header{
-
 background:#111a27;
 padding:25px;
 border-bottom:1px solid #2a3b54;
-
 }
 
 h1{
@@ -37,24 +36,19 @@ margin-top:5px;
 }
 
 .container{
-
 max-width:1000px;
 margin:auto;
 padding:30px;
-
 }
 
 .panel{
-
 background:#121b27;
 border:1px solid #2a3b54;
 border-radius:12px;
 padding:25px;
-
 }
 
 button{
-
 margin-top:10px;
 margin-right:10px;
 padding:12px 18px;
@@ -64,33 +58,26 @@ color:#09111c;
 font-weight:bold;
 border-radius:8px;
 cursor:pointer;
-
 }
 
 button:hover{
-
 background:#7bbcff;
-
 }
 
 .output{
-
 margin-top:20px;
 background:#0e1622;
 padding:20px;
 border-radius:8px;
 border:1px solid #2a3b54;
 white-space:pre-line;
-
 }
 
 .back{
-
 margin-top:25px;
 display:inline-block;
 cursor:pointer;
 color:#aebbd3;
-
 }
 
 </style>
@@ -102,7 +89,6 @@ function executarCiclo(){
 let resultado = LapidarPensanteEngine.executarEntradaManual()
 
 document.getElementById("saida").innerText =
-
 resultado.join("\n")
 
 }
@@ -114,8 +100,39 @@ function verificarStatus(){
 let status = LapidarPensanteEngine.obterStatusCompleto()
 
 document.getElementById("saida").innerText =
-
 JSON.stringify(status, null, 2)
+
+}
+
+
+
+function salvarMemoria(){
+
+let resposta = MemoriaSimbioticaLP.salvar()
+
+document.getElementById("saida").innerText = resposta
+
+}
+
+
+
+function carregarMemoria(){
+
+let resposta = MemoriaSimbioticaLP.carregar()
+
+document.getElementById("saida").innerText =
+resposta + "\n\n" +
+MemoriaSimbioticaLP.ver()
+
+}
+
+
+
+function limparMemoria(){
+
+let resposta = MemoriaSimbioticaLP.limpar()
+
+document.getElementById("saida").innerText = resposta
 
 }
 
@@ -130,9 +147,7 @@ JSON.stringify(status, null, 2)
 <h1>Painel do Engine</h1>
 
 <div class="sub">
-
-Executor simbiótico do Lapidar Pensante
-
+Executor simbiótico do Lapidar Pensante com memória persistente
 </div>
 
 </header>
@@ -146,15 +161,25 @@ Clique para executar o ciclo completo do Andróide Pensador:
 <br>
 
 <button onclick="executarCiclo()">
-
 Executar ciclo completo
-
 </button>
 
 <button onclick="verificarStatus()">
-
 Ver status do sistema
+</button>
 
+<br>
+
+<button onclick="salvarMemoria()">
+Salvar memória simbiótica
+</button>
+
+<button onclick="carregarMemoria()">
+Carregar memória simbiótica
+</button>
+
+<button onclick="limparMemoria()">
+Limpar memória simbiótica
 </button>
 
 
