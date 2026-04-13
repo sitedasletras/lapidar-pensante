@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sencal — Primeira Leitura</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0c1118;
+color:white;
+}
+
+header{
+background:#111a27;
+padding:25px;
+border-bottom:1px solid #2a3b54;
+}
+
+h1{
+margin:0;
+font-size:28px;
+}
+
+.sub{
+color:#aebbd3;
+margin-top:6px;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:25px;
+}
+
+.panel{
+background:#121b27;
+border:1px solid #2a3b54;
+border-radius:12px;
+padding:25px;
+margin-bottom:20px;
+}
+
+.status{
+margin-top:15px;
+color:#7bd6a3;
+}
+
+button{
+margin-top:15px;
+padding:12px 18px;
+border:none;
+background:#56a8ff;
+color:#09111c;
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#7bbcff;
+}
+
+.resultado{
+margin-top:20px;
+background:#0e1622;
+padding:15px;
+border-radius:8px;
+border:1px solid #2a3b54;
+}
+
+.back{
+margin-top:25px;
+display:inline-block;
+color:#aebbd3;
+cursor:pointer;
+}
+
+</style>
+
+<script>
+
+function iniciarLeitura(){
+
+document.getElementById("resultado").innerHTML =
+
+"Arquivo identificado.<br>" +
+
+"Estrutura textual detectada.<br>" +
+
+"Possível divisão em capítulos reconhecida.<br>" +
+
+"Classificação preliminar realizada.<br>" +
+
+"Sencal finalizou leitura inicial."
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Sencal — Primeira Leitura</h1>
+
+<div class="sub">
+Varredura estrutural inicial do manuscrito
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="panel">
+
+Esta etapa executa:
+
+<ul>
+
+<li>identificação do tipo de arquivo</li>
+
+<li>detecção preliminar de capítulos</li>
+
+<li>classificação prosa / poesia / híbrido</li>
+
+<li>verificação estrutural básica</li>
+
+</ul>
+
+<button onclick="iniciarLeitura()">
+Executar leitura Sencal
+</button>
+
+<div id="resultado" class="resultado"></div>
+
+</div>
+
+<div class="back"
+onclick="location.href='index.html'">
+
+← voltar ao painel principal
+
+</div>
+
+</div>
+
+</body>
+</html>
