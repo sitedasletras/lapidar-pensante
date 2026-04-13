@@ -11,6 +11,7 @@
 <script src="memoria_simbiotica_lp.js"></script>
 <script src="roteador_simbiotico_lp.js"></script>
 <script src="monitor_integracao_lp_lb.js"></script>
+<script src="ponte_lp_okapista.js"></script>
 
 <style>
 body{
@@ -139,6 +140,26 @@ function limparIntegracao(){
 let resposta = MonitorIntegracaoLPLB.limparIntegracao()
 document.getElementById("saida").innerText = resposta
 }
+
+function enviarParaOKapista(){
+let resposta = PonteLPOKapista.gerarPacoteVisual()
+document.getElementById("saida").innerText = resposta
+}
+
+function verPacoteOKapista(){
+let resposta = PonteLPOKapista.verPacoteVisual()
+document.getElementById("saida").innerText = resposta
+}
+
+function validarPacoteOKapista(){
+let resposta = PonteLPOKapista.validarPacote()
+document.getElementById("saida").innerText = resposta
+}
+
+function limparPacoteOKapista(){
+let resposta = PonteLPOKapista.limparPacote()
+document.getElementById("saida").innerText = resposta
+}
 </script>
 
 </head>
@@ -148,7 +169,7 @@ document.getElementById("saida").innerText = resposta
 <header>
 <h1>Painel do Engine</h1>
 <div class="sub">
-Executor simbiótico do Lapidar Pensante com memória, roteamento e monitor de integração
+Executor simbiótico do Lapidar Pensante com memória, roteamento e pontes de integração
 </div>
 </header>
 
@@ -167,56 +188,4 @@ Ver status do sistema
 <br>
 
 <button onclick="salvarMemoria()">
-Salvar memória simbiótica
-</button>
-
-<button onclick="carregarMemoria()">
-Carregar memória simbiótica
-</button>
-
-<button onclick="limparMemoria()">
-Limpar memória simbiótica
-</button>
-
-<br>
-
-<button onclick="encaminharAutomaticamente()">
-Encaminhar automaticamente
-</button>
-
-<button onclick="verMapaDestino()">
-Ver mapa de destino
-</button>
-
-<br>
-
-<button onclick="registrarIntegracao()">
-Registrar integração LP ↔ LB
-</button>
-
-<button onclick="verIntegracao()">
-Ver integração
-</button>
-
-<button onclick="validarIntegracao()">
-Validar integração
-</button>
-
-<button onclick="limparIntegracao()">
-Limpar integração
-</button>
-
-<div id="saida" class="output">
-Aguardando execução do núcleo simbiótico...
-</div>
-
-</div>
-
-<div class="back" onclick="location.href='index.html'">
-← voltar ao painel principal
-</div>
-
-</div>
-
-</body>
-</html>
+Salvar
