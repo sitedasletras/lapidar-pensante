@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decisão de Fluxo — Lapidar Pensante</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0c1118;
+color:white;
+}
+
+header{
+background:#111a27;
+padding:25px;
+border-bottom:1px solid #2a3b54;
+}
+
+h1{
+margin:0;
+font-size:28px;
+}
+
+.sub{
+color:#aebbd3;
+margin-top:6px;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:25px;
+}
+
+.panel{
+background:#121b27;
+border:1px solid #2a3b54;
+border-radius:12px;
+padding:25px;
+margin-bottom:20px;
+}
+
+button{
+margin-top:15px;
+margin-right:10px;
+padding:12px 18px;
+border:none;
+background:#56a8ff;
+color:#09111c;
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#7bbcff;
+}
+
+.resultado{
+margin-top:20px;
+background:#0e1622;
+padding:15px;
+border-radius:8px;
+border:1px solid #2a3b54;
+line-height:1.6;
+}
+
+.back{
+margin-top:25px;
+display:inline-block;
+color:#aebbd3;
+cursor:pointer;
+}
+
+</style>
+
+<script>
+
+function enviarDestino(destino){
+
+document.getElementById("resultado").innerHTML =
+
+"Destino selecionado:<br><br>" +
+
+destino +
+
+"<br><br>Encaminhamento registrado com sucesso pelo Lapidar Pensante."
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Decisão de Fluxo</h1>
+
+<div class="sub">
+Definição do encaminhamento da obra dentro do ecossistema editorial
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="panel">
+
+Selecione o próximo destino da obra:
+
+<br><br>
+
+<button onclick="enviarDestino('Lapidar Base')">
+Enviar para Lapidar Base
+</button>
+
+<button onclick="enviarDestino('OKapista')">
+Enviar para OKapista
+</button>
+
+<button onclick="enviarDestino('Avaliação Literária')">
+Enviar para Avaliação Literária
+</button>
+
+<button onclick="enviarDestino('Segunda Língua(s)')">
+Enviar para Segunda Língua(s)
+</button>
+
+<button onclick="enviarDestino('Silos')">
+Enviar para Silos
+</button>
+
+<div id="resultado" class="resultado"></div>
+
+</div>
+
+<div class="back"
+onclick="location.href='index.html'">
+
+← voltar ao painel principal
+
+</div>
+
+</div>
+
+</body>
+</html>
