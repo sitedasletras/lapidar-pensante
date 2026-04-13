@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Painel do Engine — Lapidar Pensante</title>
+
+<script src="core_lp.js"></script>
+<script src="engine_lp.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0b1017;
+color:white;
+}
+
+header{
+
+background:#111a27;
+padding:25px;
+border-bottom:1px solid #2a3b54;
+
+}
+
+h1{
+margin:0;
+font-size:28px;
+}
+
+.sub{
+color:#aebbd3;
+margin-top:5px;
+}
+
+.container{
+
+max-width:1000px;
+margin:auto;
+padding:30px;
+
+}
+
+.panel{
+
+background:#121b27;
+border:1px solid #2a3b54;
+border-radius:12px;
+padding:25px;
+
+}
+
+button{
+
+margin-top:10px;
+margin-right:10px;
+padding:12px 18px;
+border:none;
+background:#56a8ff;
+color:#09111c;
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#7bbcff;
+
+}
+
+.output{
+
+margin-top:20px;
+background:#0e1622;
+padding:20px;
+border-radius:8px;
+border:1px solid #2a3b54;
+white-space:pre-line;
+
+}
+
+.back{
+
+margin-top:25px;
+display:inline-block;
+cursor:pointer;
+color:#aebbd3;
+
+}
+
+</style>
+
+<script>
+
+function executarCiclo(){
+
+let resultado = LapidarPensanteEngine.executarEntradaManual()
+
+document.getElementById("saida").innerText =
+
+resultado.join("\n")
+
+}
+
+
+
+function verificarStatus(){
+
+let status = LapidarPensanteEngine.obterStatusCompleto()
+
+document.getElementById("saida").innerText =
+
+JSON.stringify(status, null, 2)
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Painel do Engine</h1>
+
+<div class="sub">
+
+Executor simbiótico do Lapidar Pensante
+
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="panel">
+
+Clique para executar o ciclo completo do Andróide Pensador:
+
+<br>
+
+<button onclick="executarCiclo()">
+
+Executar ciclo completo
+
+</button>
+
+<button onclick="verificarStatus()">
+
+Ver status do sistema
+
+</button>
+
+
+<div id="saida" class="output">
+
+Aguardando execução do núcleo simbiótico...
+
+</div>
+
+</div>
+
+
+<div class="back"
+onclick="location.href='index.html'">
+
+← voltar ao painel principal
+
+</div>
+
+</div>
+
+</body>
+</html>
