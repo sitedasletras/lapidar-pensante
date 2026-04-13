@@ -16,6 +16,7 @@
 <script src="ponte_lp_segunda_linguas.js"></script>
 <script src="ponte_lp_diagramacao.js"></script>
 <script src="ponte_lp_silos.js"></script>
+<script src="supervisor_pipeline_lp.js"></script>
 <script src="orquestrador_lp.js"></script>
 <script src="detector_estado_lp.js"></script>
 
@@ -378,6 +379,38 @@ DetectorEstadoLP.executarFluxoAutomatico()
 document.getElementById("saida").innerText =
 Array.isArray(resposta) ? resposta.join("\n") : resposta
 }
+
+function registrarEtapaManual(){
+let resposta =
+SupervisorPipelineLP.registrarExecucao("registro_manual_pelo_painel")
+
+document.getElementById("saida").innerText =
+resposta
+}
+
+function verHistoricoPipeline(){
+let resposta =
+SupervisorPipelineLP.verHistorico()
+
+document.getElementById("saida").innerText =
+resposta
+}
+
+function verUltimaExecucao(){
+let resposta =
+SupervisorPipelineLP.ultimaExecucao()
+
+document.getElementById("saida").innerText =
+typeof resposta === "string" ? resposta : JSON.stringify(resposta, null, 2)
+}
+
+function limparHistoricoPipeline(){
+let resposta =
+SupervisorPipelineLP.limparHistorico()
+
+document.getElementById("saida").innerText =
+resposta
+}
 </script>
 
 </head>
@@ -387,7 +420,7 @@ Array.isArray(resposta) ? resposta.join("\n") : resposta
 <header>
 <h1>Painel do Engine</h1>
 <div class="sub">
-Executor simbiótico do Lapidar Pensante com memória, roteamento, integrações, orquestração e detecção automática de estado
+Executor simbiótico do Lapidar Pensante com memória, roteamento, integrações, orquestração, detecção automática e supervisão institucional
 </div>
 </header>
 
@@ -490,6 +523,13 @@ Limpar integração
 
 <button onclick="verEstadoDaObra()">Ver estado da obra</button>
 <button onclick="executarFluxoAutomaticoInteligente()">Executar fluxo automático inteligente</button>
+
+<br><br>
+
+<button onclick="registrarEtapaManual()">Registrar etapa manual</button>
+<button onclick="verHistoricoPipeline()">Ver histórico do pipeline</button>
+<button onclick="verUltimaExecucao()">Ver última execução</button>
+<button onclick="limparHistoricoPipeline()">Limpar histórico</button>
 
 <div id="saida" class="output">
 Aguardando execução do núcleo simbiótico...
