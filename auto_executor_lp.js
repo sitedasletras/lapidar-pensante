@@ -1,9 +1,12 @@
 /*
-AUTO EXECUTOR CONTÍNUO
+AUTO EXECUTOR INTELIGENTE
 Lapidar Pensante
 
-Executa verificações periódicas do estado da obra
-e dispara pipelines automaticamente com apoio do Core
+Executa ciclos automáticos baseados em:
+– estado da obra
+– histórico anterior
+– nível de confiança simbiótico
+– decisão autônoma supervisionável
 */
 
 
@@ -17,21 +20,29 @@ loopExecucao:null,
 iniciar(){
 
 if(this.ativo){
+
 return "AutoExecutor já está ativo"
+
 }
+
 
 this.ativo = true
 
-this.loopExecucao = setInterval(() => {
+
+this.loopExecucao = setInterval(()=>{
+
 this.executarCiclo()
+
 }, this.intervaloExecucao)
+
 
 LapidarPensanteCore.registrarDecisao(
 "autoexecutor",
 "iniciado"
 )
 
-return "AutoExecutor simbiótico iniciado"
+
+return "AutoExecutor simbiótico inteligente iniciado"
 
 },
 
@@ -40,17 +51,24 @@ return "AutoExecutor simbiótico iniciado"
 parar(){
 
 if(!this.ativo){
+
 return "AutoExecutor já está parado"
+
 }
 
+
 clearInterval(this.loopExecucao)
+
 this.loopExecucao = null
+
 this.ativo = false
+
 
 LapidarPensanteCore.registrarDecisao(
 "autoexecutor",
 "interrompido"
 )
+
 
 return "AutoExecutor simbiótico interrompido"
 
@@ -62,69 +80,50 @@ executarCiclo(){
 
 const estado = LapidarPensanteCore.carregarEstadoAtual()
 
+
 SupervisorPipelineLP.registrarExecucao(
-"autoexecutor_verificacao_estado"
+"autoexecutor_estado_detectado"
 )
 
-switch(estado){
 
-case "nenhuma_obra":
+if(estado === "nenhuma_obra"){
+
 LapidarPensanteCore.registrarDecisao(
-"autoexecutor_estado",
-"nenhuma_obra"
+"autoexecutor",
+"nenhuma_obra_detectada"
 )
+
 return "Nenhuma obra carregada"
 
+}
 
-case "obra_sem_texto":
+
+if(estado === "obra_sem_texto"){
+
 LapidarPensanteCore.registrarDecisao(
-"autoexecutor_estado",
-"obra_sem_texto"
+"autoexecutor",
+"texto_nao_detectado"
 )
-return "Texto base não encontrado"
 
-
-case "texto_sem_capitulos":
-LapidarPensanteCore.registrarDecisao(
-"autoexecutor_pipeline",
-"pipeline_leve"
-)
-LapidarPensanteCore.registrarPipelineExecutado(
-"pipeline_leve"
-)
-return OrquestradorLP.executarPipelineLeve()
-
-
-case "obra_curta":
-LapidarPensanteCore.registrarDecisao(
-"autoexecutor_pipeline",
-"pipeline_analise"
-)
-LapidarPensanteCore.registrarPipelineExecutado(
-"pipeline_analise"
-)
-return OrquestradorLP.executarPipelineAnalise()
-
-
-case "obra_estruturada":
-LapidarPensanteCore.registrarDecisao(
-"autoexecutor_pipeline",
-"pipeline_completo"
-)
-LapidarPensanteCore.registrarPipelineExecutado(
-"pipeline_completo"
-)
-return OrquestradorLP.executarPipelineCompleto()
-
-
-default:
-LapidarPensanteCore.registrarDecisao(
-"autoexecutor_estado",
-"estado_desconhecido"
-)
-return "Estado não identificado"
+return "Texto base não identificado"
 
 }
+
+
+/*
+Agora entra o comportamento inteligente
+*/
+
+const decisao = DecisorExecucaoLP.executarDecisao()
+
+
+LapidarPensanteCore.registrarDecisao(
+"autoexecutor_execucao",
+decisao
+)
+
+
+return decisao
 
 },
 
@@ -135,8 +134,11 @@ executarCicloManual(){
 let resposta = this.executarCiclo()
 
 if(Array.isArray(resposta)){
+
 return resposta.join("\n")
+
 }
+
 
 return resposta
 
@@ -146,7 +148,9 @@ return resposta
 
 status(){
 
-return this.ativo ? "AutoExecutor ativo" : "AutoExecutor parado"
+return this.ativo
+? "AutoExecutor inteligente ativo"
+: "AutoExecutor inteligente parado"
 
 }
 
@@ -155,4 +159,4 @@ return this.ativo ? "AutoExecutor ativo" : "AutoExecutor parado"
 }
 
 
-console.log("AUTO EXECUTOR LP ATIVO")
+console.log("AUTO EXECUTOR INTELIGENTE LP ATIVO")
