@@ -1,578 +1,196 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Painel do Engine — Lapidar Pensante</title>
-
-<script src="core_lp.js"></script>
-<script src="engine_lp.js"></script>
-<script src="memoria_simbiotica_lp.js"></script>
-<script src="roteador_simbiotico_lp.js"></script>
-<script src="monitor_integracao_lp_lb.js"></script>
-<script src="ponte_lp_okapista.js"></script>
-<script src="ponte_lp_avaliacao.js"></script>
-<script src="ponte_lp_segunda_linguas.js"></script>
-<script src="ponte_lp_diagramacao.js"></script>
-<script src="ponte_lp_silos.js"></script>
-<script src="supervisor_pipeline_lp.js"></script>
-<script src="orquestrador_lp.js"></script>
-<script src="detector_estado_lp.js"></script>
-<script src="auto_executor_lp.js"></script>
+<title>Lapidar Pensante — Engine Central</title>
 
 <style>
+
 body{
-margin:0;
+
 font-family:Arial;
-background:#0b1017;
+background:#0b1c2c;
 color:white;
-}
+text-align:center;
+padding:40px;
 
-header{
-background:#111a27;
-padding:25px;
-border-bottom:1px solid #2a3b54;
-}
-
-h1{
-margin:0;
-font-size:28px;
-}
-
-.sub{
-color:#aebbd3;
-margin-top:5px;
-}
-
-.container{
-max-width:1000px;
-margin:auto;
-padding:30px;
-}
-
-.panel{
-background:#121b27;
-border:1px solid #2a3b54;
-border-radius:12px;
-padding:25px;
 }
 
 button{
-margin-top:10px;
-margin-right:10px;
-padding:12px 18px;
+
+padding:15px;
+margin:10px;
+font-size:16px;
+cursor:pointer;
 border:none;
-background:#56a8ff;
-color:#09111c;
-font-weight:bold;
-border-radius:8px;
-cursor:pointer;
+border-radius:6px;
+
 }
 
-button:hover{
-background:#7bbcff;
-}
+.bloco{
 
-.output{
-margin-top:20px;
-background:#0e1622;
-padding:20px;
-border-radius:8px;
-border:1px solid #2a3b54;
-white-space:pre-line;
-line-height:1.6;
-}
-
-.back{
-margin-top:25px;
+background:#142f46;
+padding:30px;
+border-radius:12px;
 display:inline-block;
-cursor:pointer;
-color:#aebbd3;
+
 }
+
+.titulo{
+
+font-size:28px;
+margin-bottom:20px;
+
+}
+
+.status{
+
+margin-top:20px;
+font-size:18px;
+
+}
+
 </style>
-
-<script>
-function executarCiclo(){
-let resultado =
-LapidarPensanteEngine.executarEntradaManual()
-
-document.getElementById("saida").innerText =
-resultado.join("\n")
-}
-
-function verificarStatus(){
-let status =
-LapidarPensanteEngine.obterStatusCompleto()
-
-document.getElementById("saida").innerText =
-JSON.stringify(status, null, 2)
-}
-
-function salvarMemoria(){
-let resposta =
-MemoriaSimbioticaLP.salvar()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function carregarMemoria(){
-let resposta =
-MemoriaSimbioticaLP.carregar()
-
-document.getElementById("saida").innerText =
-resposta + "\n\n" + MemoriaSimbioticaLP.ver()
-}
-
-function limparMemoria(){
-let resposta =
-MemoriaSimbioticaLP.limpar()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function encaminharAutomaticamente(){
-let resposta =
-RoteadorSimbioticoLP.encaminharAutomaticamente()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function verMapaDestino(){
-let mapa =
-RoteadorSimbioticoLP.verMapaDeDestino()
-
-document.getElementById("saida").innerText =
-mapa
-}
-
-function registrarIntegracao(){
-let resposta =
-MonitorIntegracaoLPLB.registrarIntegracao()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function verIntegracao(){
-let resposta =
-MonitorIntegracaoLPLB.verStatusIntegracao()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function validarIntegracao(){
-let resposta =
-MonitorIntegracaoLPLB.validarIntegracao()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function limparIntegracao(){
-let resposta =
-MonitorIntegracaoLPLB.limparIntegracao()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function enviarParaOKapista(){
-let resposta =
-PonteLPOKapista.gerarPacoteVisual()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function verPacoteOKapista(){
-let resposta =
-PonteLPOKapista.verPacoteVisual()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function validarPacoteOKapista(){
-let resposta =
-PonteLPOKapista.validarPacote()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function limparPacoteOKapista(){
-let resposta =
-PonteLPOKapista.limparPacote()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function enviarParaAvaliacao(){
-let resposta =
-PonteLPAvaliacao.gerarPacoteAnalise()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function verPacoteAvaliacao(){
-let resposta =
-PonteLPAvaliacao.verPacoteAnalise()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function validarPacoteAvaliacao(){
-let resposta =
-PonteLPAvaliacao.validarPacoteAnalise()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function limparPacoteAvaliacao(){
-let resposta =
-PonteLPAvaliacao.limparPacoteAnalise()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function enviarParaSegundaLinguas(){
-let resposta =
-PonteLPSegundaLinguas.gerarPacoteTraducao()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function verPacoteSegundaLinguas(){
-let resposta =
-PonteLPSegundaLinguas.verPacoteTraducao()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function validarPacoteSegundaLinguas(){
-let resposta =
-PonteLPSegundaLinguas.validarPacoteTraducao()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function limparPacoteSegundaLinguas(){
-let resposta =
-PonteLPSegundaLinguas.limparPacoteTraducao()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function enviarParaDiagramacao(){
-let resposta =
-PonteLPDiagramacao.gerarPacoteDiagramacao()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function verPacoteDiagramacao(){
-let resposta =
-PonteLPDiagramacao.verPacoteDiagramacao()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function validarPacoteDiagramacao(){
-let resposta =
-PonteLPDiagramacao.validarPacoteDiagramacao()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function limparPacoteDiagramacao(){
-let resposta =
-PonteLPDiagramacao.limparPacoteDiagramacao()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function enviarParaSilos(){
-let resposta =
-PonteLPSilos.gerarPacoteSilos()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function verPacoteSilos(){
-let resposta =
-PonteLPSilos.verPacoteSilos()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function validarPacoteSilos(){
-let resposta =
-PonteLPSilos.validarPacoteSilos()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function limparPacoteSilos(){
-let resposta =
-PonteLPSilos.limparPacoteSilos()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function executarPipelineCompleto(){
-let resposta =
-OrquestradorLP.executarPipelineCompleto()
-
-document.getElementById("saida").innerText =
-Array.isArray(resposta) ? resposta.join("\n") : resposta
-}
-
-function executarPipelineLeve(){
-let resposta =
-OrquestradorLP.executarPipelineLeve()
-
-document.getElementById("saida").innerText =
-Array.isArray(resposta) ? resposta.join("\n") : resposta
-}
-
-function executarPipelineAnalise(){
-let resposta =
-OrquestradorLP.executarPipelineAnalise()
-
-document.getElementById("saida").innerText =
-Array.isArray(resposta) ? resposta.join("\n") : resposta
-}
-
-function verEstadoDaObra(){
-let resposta =
-DetectorEstadoLP.verEstadoAtual()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function executarFluxoAutomaticoInteligente(){
-let resposta =
-DetectorEstadoLP.executarFluxoAutomatico()
-
-document.getElementById("saida").innerText =
-Array.isArray(resposta) ? resposta.join("\n") : resposta
-}
-
-function registrarEtapaManual(){
-let resposta =
-SupervisorPipelineLP.registrarExecucao("registro_manual_pelo_painel")
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function verHistoricoPipeline(){
-let resposta =
-SupervisorPipelineLP.verHistorico()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function verUltimaExecucao(){
-let resposta =
-SupervisorPipelineLP.ultimaExecucao()
-
-document.getElementById("saida").innerText =
-typeof resposta === "string" ? resposta : JSON.stringify(resposta, null, 2)
-}
-
-function limparHistoricoPipeline(){
-let resposta =
-SupervisorPipelineLP.limparHistorico()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function iniciarAutoExecutor(){
-let resposta =
-AutoExecutorLP.iniciar()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function pararAutoExecutor(){
-let resposta =
-AutoExecutorLP.parar()
-
-document.getElementById("saida").innerText =
-resposta
-}
-
-function verStatusAutoExecutor(){
-let resposta =
-AutoExecutorLP.status()
-
-document.getElementById("saida").innerText =
-resposta
-}
-</script>
 
 </head>
 
+
 <body>
 
-<header>
-<h1>Painel do Engine</h1>
-<div class="sub">
-Executor simbiótico do Lapidar Pensante com memória, roteamento, integrações, orquestração, detecção automática, supervisão institucional e autoexecução contínua
-</div>
-</header>
 
-<div class="container">
+<div class="bloco">
 
-<div class="panel">
 
-<button onclick="executarCiclo()">
-Executar ciclo completo
-</button>
+<div class="titulo">
 
-<button onclick="verificarStatus()">
-Ver status do sistema
-</button>
-
-<br><br>
-
-<button onclick="salvarMemoria()">
-Salvar memória simbiótica
-</button>
-
-<button onclick="carregarMemoria()">
-Carregar memória simbiótica
-</button>
-
-<button onclick="limparMemoria()">
-Limpar memória simbiótica
-</button>
-
-<br><br>
-
-<button onclick="encaminharAutomaticamente()">
-Encaminhar automaticamente
-</button>
-
-<button onclick="verMapaDestino()">
-Ver mapa de destino
-</button>
-
-<br><br>
-
-<button onclick="registrarIntegracao()">
-Registrar integração LP ↔ LB
-</button>
-
-<button onclick="verIntegracao()">
-Ver integração
-</button>
-
-<button onclick="validarIntegracao()">
-Validar integração
-</button>
-
-<button onclick="limparIntegracao()">
-Limpar integração
-</button>
-
-<br><br>
-
-<button onclick="enviarParaOKapista()">Enviar pacote ao OKapista</button>
-<button onclick="verPacoteOKapista()">Ver pacote OKapista</button>
-<button onclick="validarPacoteOKapista()">Validar pacote OKapista</button>
-<button onclick="limparPacoteOKapista()">Limpar pacote OKapista</button>
-
-<br><br>
-
-<button onclick="enviarParaAvaliacao()">Enviar pacote à Avaliação</button>
-<button onclick="verPacoteAvaliacao()">Ver pacote Avaliação</button>
-<button onclick="validarPacoteAvaliacao()">Validar pacote Avaliação</button>
-<button onclick="limparPacoteAvaliacao()">Limpar pacote Avaliação</button>
-
-<br><br>
-
-<button onclick="enviarParaSegundaLinguas()">Enviar pacote à Segunda Língua(s)</button>
-<button onclick="verPacoteSegundaLinguas()">Ver pacote Segunda Língua(s)</button>
-<button onclick="validarPacoteSegundaLinguas()">Validar pacote Segunda Língua(s)</button>
-<button onclick="limparPacoteSegundaLinguas()">Limpar pacote Segunda Língua(s)</button>
-
-<br><br>
-
-<button onclick="enviarParaDiagramacao()">Enviar pacote à Diagramação</button>
-<button onclick="verPacoteDiagramacao()">Ver pacote Diagramação</button>
-<button onclick="validarPacoteDiagramacao()">Validar pacote Diagramação</button>
-<button onclick="limparPacoteDiagramacao()">Limpar pacote Diagramação</button>
-
-<br><br>
-
-<button onclick="enviarParaSilos()">Enviar pacote aos Silos</button>
-<button onclick="verPacoteSilos()">Ver pacote Silos</button>
-<button onclick="validarPacoteSilos()">Validar pacote Silos</button>
-<button onclick="limparPacoteSilos()">Limpar pacote Silos</button>
-
-<br><br>
-
-<button onclick="executarPipelineCompleto()">Executar pipeline completo</button>
-<button onclick="executarPipelineLeve()">Executar pipeline leve</button>
-<button onclick="executarPipelineAnalise()">Executar pipeline análise</button>
-
-<br><br>
-
-<button onclick="verEstadoDaObra()">Ver estado da obra</button>
-<button onclick="executarFluxoAutomaticoInteligente()">Executar fluxo automático inteligente</button>
-
-<br><br>
-
-<button onclick="registrarEtapaManual()">Registrar etapa manual</button>
-<button onclick="verHistoricoPipeline()">Ver histórico do pipeline</button>
-<button onclick="verUltimaExecucao()">Ver última execução</button>
-<button onclick="limparHistoricoPipeline()">Limpar histórico</button>
-
-<br><br>
-
-<button onclick="iniciarAutoExecutor()">Iniciar AutoExecutor</button>
-<button onclick="pararAutoExecutor()">Parar AutoExecutor</button>
-<button onclick="verStatusAutoExecutor()">Status AutoExecutor</button>
-
-<div id="saida" class="output">
-Aguardando execução do núcleo simbiótico...
-</div>
+ENGINE CENTRAL — LAPIDAR PENSANTE
 
 </div>
 
-<div class="back" onclick="location.href='index.html'">
-← voltar ao painel principal
-</div>
+
+<button onclick="executarPipelineCompleto()">
+
+Executar Pipeline Completo
+
+</button>
+
+
+<button onclick="executarPipelineAnalise()">
+
+Executar Pipeline de Análise
+
+</button>
+
+
+<button onclick="executarPipelineLeve()">
+
+Executar Pipeline Leve
+
+</button>
+
+
+<br><br>
+
+
+<button onclick="ligarAutoExecutor()">
+
+Iniciar AutoExecutor
+
+</button>
+
+
+<button onclick="desligarAutoExecutor()">
+
+Parar AutoExecutor
+
+</button>
+
+
+<button onclick="verStatusAutoExecutor()">
+
+Status AutoExecutor
+
+</button>
+
+
+<div class="status" id="statusExecutor">
+
+Status: aguardando comando
 
 </div>
+
+
+</div>
+
+
+<script src="detector_estado_lp.js"></script>
+<script src="supervisor_pipeline_lp.js"></script>
+<script src="orquestrador_lp.js"></script>
+<script src="auto_executor_lp.js"></script>
+
+
+<script>
+
+
+function executarPipelineCompleto(){
+
+OrquestradorLP.executarPipelineCompleto()
+
+alert("Pipeline completo executado")
+
+}
+
+
+function executarPipelineAnalise(){
+
+OrquestradorLP.executarPipelineAnalise()
+
+alert("Pipeline análise executado")
+
+}
+
+
+function executarPipelineLeve(){
+
+OrquestradorLP.executarPipelineLeve()
+
+alert("Pipeline leve executado")
+
+}
+
+
+function ligarAutoExecutor(){
+
+let resposta = AutoExecutorLP.iniciar()
+
+document.getElementById("statusExecutor").innerText = resposta
+
+}
+
+
+function desligarAutoExecutor(){
+
+let resposta = AutoExecutorLP.parar()
+
+document.getElementById("statusExecutor").innerText = resposta
+
+}
+
+
+function verStatusAutoExecutor(){
+
+let resposta = AutoExecutorLP.status()
+
+document.getElementById("statusExecutor").innerText = resposta
+
+}
+
+
+</script>
+
 
 </body>
+
 </html>
