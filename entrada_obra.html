@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Entrada da Obra — Lapidar Pensante</title>
 
 <script src="core_lp.js"></script>
 <script src="engine_lp.js"></script>
+<script src="sensor_leitura_lp.js"></script>
 
 <style>
-
 body{
 margin:0;
 font-family:Arial;
@@ -47,8 +46,7 @@ border-radius:12px;
 padding:25px;
 }
 
-input{
-
+input, textarea{
 width:100%;
 margin-top:10px;
 margin-bottom:20px;
@@ -56,12 +54,17 @@ padding:10px;
 border-radius:6px;
 border:none;
 font-size:16px;
+box-sizing:border-box;
+}
 
+textarea{
+min-height:260px;
+resize:vertical;
 }
 
 button{
-
 margin-top:10px;
+margin-right:10px;
 padding:12px 18px;
 border:none;
 background:#56a8ff;
@@ -69,7 +72,6 @@ color:#09111c;
 font-weight:bold;
 border-radius:8px;
 cursor:pointer;
-
 }
 
 button:hover{
@@ -77,129 +79,100 @@ background:#7bbcff;
 }
 
 .output{
-
 margin-top:20px;
 background:#0e1622;
 padding:20px;
 border-radius:8px;
 border:1px solid #2a3b54;
 white-space:pre-line;
-
+line-height:1.6;
 }
 
 .back{
-
 margin-top:25px;
 display:inline-block;
 cursor:pointer;
 color:#aebbd3;
-
 }
-
 </style>
 
 <script>
+function carregarObraManual(){
 
-function enviarObra(){
+let titulo = document.getElementById("titulo").value
+let autor = document.getElementById("autor").value
+let genero = document.getElementById("genero").value
+let texto = document.getElementById("texto").value
 
-let titulo=document.getElementById("titulo").value
-let autor=document.getElementById("autor").value
-let genero=document.getElementById("genero").value
+let leitura = SensorLeituraLP.analisarTexto(texto)
 
-
-let obra={
-
-titulo:titulo,
-autor:autor,
-genero:genero,
-estrutura:"capítulos",
-capitulos:[],
-personagens:[],
-clima:"não identificado",
-status:"carregada manualmente"
-
+let obra = {
+titulo: titulo || leitura.titulo || "Sem título",
+autor: autor || "Autor não informado",
+subtitulo: null,
+genero: genero || "não identificado",
+estrutura: leitura.estruturaDetectada ? "estrutura detectada" : "não detectada",
+capitulos: leitura.capitulos || [],
+partes: leitura.partes || [],
+personagens: [],
+clima: "não identificado",
+prologo: leitura.prologo,
+epilogo: leitura.epilogo,
+prefacio: leitura.prefacio,
+textoBase: texto,
+status: "carregada manualmente"
 }
 
+let resposta = LapidarPensanteCore.carregarObra(obra)
 
-let resposta=LapidarPensanteCore.carregarObra(obra)
-
-document.getElementById("saida").innerText=resposta
+document.getElementById("saida").innerText =
+resposta + "\n\n" +
+"Título detectado: " + (leitura.titulo || "não identificado") + "\n" +
+"Partes detectadas: " + leitura.partes.length + "\n" +
+"Capítulos detectados: " + leitura.capitulos.length + "\n" +
+"Prólogo: " + (leitura.prologo ? "sim" : "não") + "\n" +
+"Epílogo: " + (leitura.epilogo ? "sim" : "não") + "\n" +
+"Prefácio: " + (leitura.prefacio ? "sim" : "não")
 
 }
-
-
 
 function executarLeituraCompleta(){
 
-let resultado=LapidarPensanteEngine.iniciarCicloCompleto(
+let resultado = LapidarPensanteEngine.iniciarCicloCompleto(
 LapidarPensanteCore.memoriaObra
 )
 
-document.getElementById("saida").innerText=
+document.getElementById("saida").innerText =
 resultado.join("\n")
 
 }
-
 </script>
-
 </head>
 
 <body>
 
 <header>
-
 <h1>Entrada da Obra</h1>
-
 <div class="sub">
-Recepção simbiótica inicial do manuscrito
+Recepção simbiótica inicial do manuscrito com sensor estrutural
 </div>
-
 </header>
 
 <div class="container">
-
 <div class="panel">
 
 Título da obra
-
 <input id="titulo">
 
 Autor
-
 <input id="autor">
 
 Gênero
-
 <input id="genero">
 
+Texto da obra
+<textarea id="texto"></textarea>
 
-<button onclick="enviarObra()">
+<button onclick="carregarObraManual()">
 Carregar obra no núcleo
 </button>
-
-
-<button onclick="executarLeituraCompleta()">
-Executar ciclo completo
-</button>
-
-
-<div id="saida" class="output">
-
-Aguardando entrada da obra...
-
-</div>
-
-</div>
-
-
-<div class="back"
-onclick="location.href='index.html'">
-
-← voltar ao painel principal
-
-</div>
-
-</div>
-
-</body>
-</html>
