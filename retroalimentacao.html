@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retroalimentação — Lapidar Pensante</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0c1118;
+color:white;
+}
+
+header{
+background:#111a27;
+padding:25px;
+border-bottom:1px solid #2a3b54;
+}
+
+h1{
+margin:0;
+font-size:28px;
+}
+
+.sub{
+color:#aebbd3;
+margin-top:6px;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:25px;
+}
+
+.panel{
+background:#121b27;
+border:1px solid #2a3b54;
+border-radius:12px;
+padding:25px;
+margin-bottom:20px;
+}
+
+button{
+margin-top:15px;
+padding:12px 18px;
+border:none;
+background:#56a8ff;
+color:#09111c;
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#7bbcff;
+}
+
+.resultado{
+margin-top:20px;
+background:#0e1622;
+padding:15px;
+border-radius:8px;
+border:1px solid #2a3b54;
+line-height:1.6;
+}
+
+.back{
+margin-top:25px;
+display:inline-block;
+color:#aebbd3;
+cursor:pointer;
+}
+
+</style>
+
+<script>
+
+function executarRetroalimentacao(){
+
+document.getElementById("resultado").innerHTML =
+
+"Soluções úteis identificadas no ecossistema.<br>" +
+
+"Melhorias reaproveitáveis registradas.<br>" +
+
+"Correções válidas propagadas para as outras ferramentas.<br>" +
+
+"Padrões bem-sucedidos incorporados ao núcleo simbiótico.<br>" +
+
+"Memória evolutiva atualizada.<br>" +
+
+"Retroalimentação concluída com sucesso."
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Retroalimentação</h1>
+
+<div class="sub">
+Reaproveitamento simbiótico de soluções e evolução contínua do ecossistema
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="panel">
+
+Esta etapa executa:
+
+<ul>
+
+<li>captura de soluções úteis geradas pelos módulos</li>
+
+<li>reaproveitamento de melhorias técnicas</li>
+
+<li>propagação de correções entre ferramentas</li>
+
+<li>atualização da memória evolutiva do sistema</li>
+
+<li>fortalecimento contínuo do ecossistema</li>
+
+</ul>
+
+<button onclick="executarRetroalimentacao()">
+Executar retroalimentação
+</button>
+
+<div id="resultado" class="resultado"></div>
+
+</div>
+
+<div class="back"
+onclick="location.href='index.html'">
+
+← voltar ao painel principal
+
+</div>
+
+</div>
+
+</body>
+</html>
