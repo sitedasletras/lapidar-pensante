@@ -3,14 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Entrada da Obra — Lapidar Pensante</title>
+
+<script src="core_lp.js"></script>
+<script src="engine_lp.js"></script>
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#0c1118;
+background:#0b1017;
 color:white;
 }
 
@@ -27,13 +31,13 @@ font-size:28px;
 
 .sub{
 color:#aebbd3;
-margin-top:6px;
+margin-top:5px;
 }
 
 .container{
 max-width:900px;
 margin:auto;
-padding:25px;
+padding:30px;
 }
 
 .panel{
@@ -44,17 +48,20 @@ padding:25px;
 }
 
 input{
+
 width:100%;
-padding:12px;
-margin-top:15px;
-background:#0e1622;
-border:1px solid #2a3b54;
-color:white;
-border-radius:8px;
+margin-top:10px;
+margin-bottom:20px;
+padding:10px;
+border-radius:6px;
+border:none;
+font-size:16px;
+
 }
 
 button{
-margin-top:20px;
+
+margin-top:10px;
 padding:12px 18px;
 border:none;
 background:#56a8ff;
@@ -62,39 +69,74 @@ color:#09111c;
 font-weight:bold;
 border-radius:8px;
 cursor:pointer;
+
 }
 
 button:hover{
 background:#7bbcff;
 }
 
-.back{
-margin-top:25px;
-display:inline-block;
-color:#aebbd3;
-cursor:pointer;
+.output{
+
+margin-top:20px;
+background:#0e1622;
+padding:20px;
+border-radius:8px;
+border:1px solid #2a3b54;
+white-space:pre-line;
+
 }
 
-.status{
-margin-top:20px;
-color:#7bd6a3;
+.back{
+
+margin-top:25px;
+display:inline-block;
+cursor:pointer;
+color:#aebbd3;
+
 }
 
 </style>
 
 <script>
 
-function confirmarUpload(){
+function enviarObra(){
 
-let arquivo = document.getElementById("arquivo").files[0]
+let titulo=document.getElementById("titulo").value
+let autor=document.getElementById("autor").value
+let genero=document.getElementById("genero").value
 
-if(!arquivo){
-alert("Selecione um arquivo primeiro.")
-return
+
+let obra={
+
+titulo:titulo,
+autor:autor,
+genero:genero,
+estrutura:"capítulos",
+capitulos:[],
+personagens:[],
+clima:"não identificado",
+status:"carregada manualmente"
+
 }
 
-document.getElementById("status").innerHTML =
-"Arquivo recebido: " + arquivo.name
+
+let resposta=LapidarPensanteCore.carregarObra(obra)
+
+document.getElementById("saida").innerText=resposta
+
+}
+
+
+
+function executarLeituraCompleta(){
+
+let resultado=LapidarPensanteEngine.iniciarCicloCompleto(
+LapidarPensanteCore.memoriaObra
+)
+
+document.getElementById("saida").innerText=
+resultado.join("\n")
 
 }
 
@@ -109,7 +151,7 @@ document.getElementById("status").innerHTML =
 <h1>Entrada da Obra</h1>
 
 <div class="sub">
-Primeira etapa do Lapidar Pensante — recepção do manuscrito para leitura simbiótica
+Recepção simbiótica inicial do manuscrito
 </div>
 
 </header>
@@ -118,21 +160,43 @@ Primeira etapa do Lapidar Pensante — recepção do manuscrito para leitura sim
 
 <div class="panel">
 
-Selecione o arquivo da obra (DOCX, PDF ou TXT):
+Título da obra
 
-<input type="file" id="arquivo">
+<input id="titulo">
 
-<button onclick="confirmarUpload()">
-Registrar entrada da obra
+Autor
+
+<input id="autor">
+
+Gênero
+
+<input id="genero">
+
+
+<button onclick="enviarObra()">
+Carregar obra no núcleo
 </button>
 
-<div id="status" class="status"></div>
+
+<button onclick="executarLeituraCompleta()">
+Executar ciclo completo
+</button>
+
+
+<div id="saida" class="output">
+
+Aguardando entrada da obra...
 
 </div>
 
+</div>
+
+
 <div class="back"
 onclick="location.href='index.html'">
+
 ← voltar ao painel principal
+
 </div>
 
 </div>
