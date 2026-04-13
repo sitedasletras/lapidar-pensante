@@ -9,6 +9,7 @@
 <script src="core_lp.js"></script>
 <script src="engine_lp.js"></script>
 <script src="memoria_simbiotica_lp.js"></script>
+<script src="roteador_simbiotico_lp.js"></script>
 
 <style>
 
@@ -136,6 +137,28 @@ document.getElementById("saida").innerText = resposta
 
 }
 
+
+
+function encaminharAutomaticamente(){
+
+let resposta =
+RoteadorSimbioticoLP.encaminharAutomaticamente()
+
+document.getElementById("saida").innerText = resposta
+
+}
+
+
+
+function verMapaDestino(){
+
+let mapa =
+RoteadorSimbioticoLP.verMapaDeDestino()
+
+document.getElementById("saida").innerText = mapa
+
+}
+
 </script>
 
 </head>
@@ -147,7 +170,7 @@ document.getElementById("saida").innerText = resposta
 <h1>Painel do Engine</h1>
 
 <div class="sub">
-Executor simbiótico do Lapidar Pensante com memória persistente
+Executor simbiótico do Lapidar Pensante com roteamento automático
 </div>
 
 </header>
@@ -155,10 +178,6 @@ Executor simbiótico do Lapidar Pensante com memória persistente
 <div class="container">
 
 <div class="panel">
-
-Clique para executar o ciclo completo do Andróide Pensador:
-
-<br>
 
 <button onclick="executarCiclo()">
 Executar ciclo completo
@@ -180,6 +199,16 @@ Carregar memória simbiótica
 
 <button onclick="limparMemoria()">
 Limpar memória simbiótica
+</button>
+
+<br>
+
+<button onclick="encaminharAutomaticamente()">
+Encaminhar automaticamente
+</button>
+
+<button onclick="verMapaDestino()">
+Ver mapa de destino
 </button>
 
 
