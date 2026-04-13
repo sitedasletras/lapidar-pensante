@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrada da Obra — Lapidar Pensante</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0c1118;
+color:white;
+}
+
+header{
+background:#111a27;
+padding:25px;
+border-bottom:1px solid #2a3b54;
+}
+
+h1{
+margin:0;
+font-size:28px;
+}
+
+.sub{
+color:#aebbd3;
+margin-top:6px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:25px;
+}
+
+.panel{
+background:#121b27;
+border:1px solid #2a3b54;
+border-radius:12px;
+padding:25px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:15px;
+background:#0e1622;
+border:1px solid #2a3b54;
+color:white;
+border-radius:8px;
+}
+
+button{
+margin-top:20px;
+padding:12px 18px;
+border:none;
+background:#56a8ff;
+color:#09111c;
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
+}
+
+button:hover{
+background:#7bbcff;
+}
+
+.back{
+margin-top:25px;
+display:inline-block;
+color:#aebbd3;
+cursor:pointer;
+}
+
+.status{
+margin-top:20px;
+color:#7bd6a3;
+}
+
+</style>
+
+<script>
+
+function confirmarUpload(){
+
+let arquivo = document.getElementById("arquivo").files[0]
+
+if(!arquivo){
+alert("Selecione um arquivo primeiro.")
+return
+}
+
+document.getElementById("status").innerHTML =
+"Arquivo recebido: " + arquivo.name
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Entrada da Obra</h1>
+
+<div class="sub">
+Primeira etapa do Lapidar Pensante — recepção do manuscrito para leitura simbiótica
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="panel">
+
+Selecione o arquivo da obra (DOCX, PDF ou TXT):
+
+<input type="file" id="arquivo">
+
+<button onclick="confirmarUpload()">
+Registrar entrada da obra
+</button>
+
+<div id="status" class="status"></div>
+
+</div>
+
+<div class="back"
+onclick="location.href='index.html'">
+← voltar ao painel principal
+</div>
+
+</div>
+
+</body>
+</html>
