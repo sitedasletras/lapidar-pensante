@@ -19,6 +19,7 @@
 <script src="supervisor_pipeline_lp.js"></script>
 <script src="orquestrador_lp.js"></script>
 <script src="detector_estado_lp.js"></script>
+<script src="auto_executor_lp.js"></script>
 
 <style>
 body{
@@ -411,6 +412,30 @@ SupervisorPipelineLP.limparHistorico()
 document.getElementById("saida").innerText =
 resposta
 }
+
+function iniciarAutoExecutor(){
+let resposta =
+AutoExecutorLP.iniciar()
+
+document.getElementById("saida").innerText =
+resposta
+}
+
+function pararAutoExecutor(){
+let resposta =
+AutoExecutorLP.parar()
+
+document.getElementById("saida").innerText =
+resposta
+}
+
+function verStatusAutoExecutor(){
+let resposta =
+AutoExecutorLP.status()
+
+document.getElementById("saida").innerText =
+resposta
+}
 </script>
 
 </head>
@@ -420,7 +445,7 @@ resposta
 <header>
 <h1>Painel do Engine</h1>
 <div class="sub">
-Executor simbiótico do Lapidar Pensante com memória, roteamento, integrações, orquestração, detecção automática e supervisão institucional
+Executor simbiótico do Lapidar Pensante com memória, roteamento, integrações, orquestração, detecção automática, supervisão institucional e autoexecução contínua
 </div>
 </header>
 
@@ -530,6 +555,12 @@ Limpar integração
 <button onclick="verHistoricoPipeline()">Ver histórico do pipeline</button>
 <button onclick="verUltimaExecucao()">Ver última execução</button>
 <button onclick="limparHistoricoPipeline()">Limpar histórico</button>
+
+<br><br>
+
+<button onclick="iniciarAutoExecutor()">Iniciar AutoExecutor</button>
+<button onclick="pararAutoExecutor()">Parar AutoExecutor</button>
+<button onclick="verStatusAutoExecutor()">Status AutoExecutor</button>
 
 <div id="saida" class="output">
 Aguardando execução do núcleo simbiótico...
