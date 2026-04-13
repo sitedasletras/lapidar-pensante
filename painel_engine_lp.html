@@ -17,6 +17,7 @@
 <script src="ponte_lp_diagramacao.js"></script>
 <script src="ponte_lp_silos.js"></script>
 <script src="orquestrador_lp.js"></script>
+<script src="detector_estado_lp.js"></script>
 
 <style>
 body{
@@ -279,4 +280,228 @@ let resposta =
 PonteLPDiagramacao.gerarPacoteDiagramacao()
 
 document.getElementById("saida").innerText =
-res
+resposta
+}
+
+function verPacoteDiagramacao(){
+let resposta =
+PonteLPDiagramacao.verPacoteDiagramacao()
+
+document.getElementById("saida").innerText =
+resposta
+}
+
+function validarPacoteDiagramacao(){
+let resposta =
+PonteLPDiagramacao.validarPacoteDiagramacao()
+
+document.getElementById("saida").innerText =
+resposta
+}
+
+function limparPacoteDiagramacao(){
+let resposta =
+PonteLPDiagramacao.limparPacoteDiagramacao()
+
+document.getElementById("saida").innerText =
+resposta
+}
+
+function enviarParaSilos(){
+let resposta =
+PonteLPSilos.gerarPacoteSilos()
+
+document.getElementById("saida").innerText =
+resposta
+}
+
+function verPacoteSilos(){
+let resposta =
+PonteLPSilos.verPacoteSilos()
+
+document.getElementById("saida").innerText =
+resposta
+}
+
+function validarPacoteSilos(){
+let resposta =
+PonteLPSilos.validarPacoteSilos()
+
+document.getElementById("saida").innerText =
+resposta
+}
+
+function limparPacoteSilos(){
+let resposta =
+PonteLPSilos.limparPacoteSilos()
+
+document.getElementById("saida").innerText =
+resposta
+}
+
+function executarPipelineCompleto(){
+let resposta =
+OrquestradorLP.executarPipelineCompleto()
+
+document.getElementById("saida").innerText =
+Array.isArray(resposta) ? resposta.join("\n") : resposta
+}
+
+function executarPipelineLeve(){
+let resposta =
+OrquestradorLP.executarPipelineLeve()
+
+document.getElementById("saida").innerText =
+Array.isArray(resposta) ? resposta.join("\n") : resposta
+}
+
+function executarPipelineAnalise(){
+let resposta =
+OrquestradorLP.executarPipelineAnalise()
+
+document.getElementById("saida").innerText =
+Array.isArray(resposta) ? resposta.join("\n") : resposta
+}
+
+function verEstadoDaObra(){
+let resposta =
+DetectorEstadoLP.verEstadoAtual()
+
+document.getElementById("saida").innerText =
+resposta
+}
+
+function executarFluxoAutomaticoInteligente(){
+let resposta =
+DetectorEstadoLP.executarFluxoAutomatico()
+
+document.getElementById("saida").innerText =
+Array.isArray(resposta) ? resposta.join("\n") : resposta
+}
+</script>
+
+</head>
+
+<body>
+
+<header>
+<h1>Painel do Engine</h1>
+<div class="sub">
+Executor simbiótico do Lapidar Pensante com memória, roteamento, integrações, orquestração e detecção automática de estado
+</div>
+</header>
+
+<div class="container">
+
+<div class="panel">
+
+<button onclick="executarCiclo()">
+Executar ciclo completo
+</button>
+
+<button onclick="verificarStatus()">
+Ver status do sistema
+</button>
+
+<br><br>
+
+<button onclick="salvarMemoria()">
+Salvar memória simbiótica
+</button>
+
+<button onclick="carregarMemoria()">
+Carregar memória simbiótica
+</button>
+
+<button onclick="limparMemoria()">
+Limpar memória simbiótica
+</button>
+
+<br><br>
+
+<button onclick="encaminharAutomaticamente()">
+Encaminhar automaticamente
+</button>
+
+<button onclick="verMapaDestino()">
+Ver mapa de destino
+</button>
+
+<br><br>
+
+<button onclick="registrarIntegracao()">
+Registrar integração LP ↔ LB
+</button>
+
+<button onclick="verIntegracao()">
+Ver integração
+</button>
+
+<button onclick="validarIntegracao()">
+Validar integração
+</button>
+
+<button onclick="limparIntegracao()">
+Limpar integração
+</button>
+
+<br><br>
+
+<button onclick="enviarParaOKapista()">Enviar pacote ao OKapista</button>
+<button onclick="verPacoteOKapista()">Ver pacote OKapista</button>
+<button onclick="validarPacoteOKapista()">Validar pacote OKapista</button>
+<button onclick="limparPacoteOKapista()">Limpar pacote OKapista</button>
+
+<br><br>
+
+<button onclick="enviarParaAvaliacao()">Enviar pacote à Avaliação</button>
+<button onclick="verPacoteAvaliacao()">Ver pacote Avaliação</button>
+<button onclick="validarPacoteAvaliacao()">Validar pacote Avaliação</button>
+<button onclick="limparPacoteAvaliacao()">Limpar pacote Avaliação</button>
+
+<br><br>
+
+<button onclick="enviarParaSegundaLinguas()">Enviar pacote à Segunda Língua(s)</button>
+<button onclick="verPacoteSegundaLinguas()">Ver pacote Segunda Língua(s)</button>
+<button onclick="validarPacoteSegundaLinguas()">Validar pacote Segunda Língua(s)</button>
+<button onclick="limparPacoteSegundaLinguas()">Limpar pacote Segunda Língua(s)</button>
+
+<br><br>
+
+<button onclick="enviarParaDiagramacao()">Enviar pacote à Diagramação</button>
+<button onclick="verPacoteDiagramacao()">Ver pacote Diagramação</button>
+<button onclick="validarPacoteDiagramacao()">Validar pacote Diagramação</button>
+<button onclick="limparPacoteDiagramacao()">Limpar pacote Diagramação</button>
+
+<br><br>
+
+<button onclick="enviarParaSilos()">Enviar pacote aos Silos</button>
+<button onclick="verPacoteSilos()">Ver pacote Silos</button>
+<button onclick="validarPacoteSilos()">Validar pacote Silos</button>
+<button onclick="limparPacoteSilos()">Limpar pacote Silos</button>
+
+<br><br>
+
+<button onclick="executarPipelineCompleto()">Executar pipeline completo</button>
+<button onclick="executarPipelineLeve()">Executar pipeline leve</button>
+<button onclick="executarPipelineAnalise()">Executar pipeline análise</button>
+
+<br><br>
+
+<button onclick="verEstadoDaObra()">Ver estado da obra</button>
+<button onclick="executarFluxoAutomaticoInteligente()">Executar fluxo automático inteligente</button>
+
+<div id="saida" class="output">
+Aguardando execução do núcleo simbiótico...
+</div>
+
+</div>
+
+<div class="back" onclick="location.href='index.html'">
+← voltar ao painel principal
+</div>
+
+</div>
+
+</body>
+</html>
