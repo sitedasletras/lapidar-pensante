@@ -8,6 +8,7 @@
 <script src="core_lp.js"></script>
 <script src="engine_lp.js"></script>
 <script src="sensor_leitura_lp.js"></script>
+<script src="integrador_sensor_core_lp.js"></script>
 
 <style>
 body{
@@ -146,6 +147,29 @@ document.getElementById("saida").innerText =
 resultado.join("\n")
 
 }
+
+function leituraAutomaticaTotal(){
+
+let texto = document.getElementById("texto").value
+
+let resultado =
+IntegradorSensorCoreLP.executarLeituraAutomaticaCompleta(texto)
+
+let estrutura = resultado.sensor.estrutura
+let engine = resultado.engine
+
+document.getElementById("saida").innerText =
+resultado.sensor.mensagem + "\n\n" +
+"Título detectado: " + estrutura.titulo + "\n" +
+"Partes detectadas: " + estrutura.partes.length + "\n" +
+"Capítulos detectados: " + estrutura.capitulos.length + "\n" +
+"Prólogo: " + (estrutura.prologo ? "sim" : "não") + "\n" +
+"Epílogo: " + (estrutura.epilogo ? "sim" : "não") + "\n" +
+"Prefácio: " + (estrutura.prefacio ? "sim" : "não") + "\n\n" +
+"=== CICLO DO ENGINE ===\n" +
+engine.join("\n")
+
+}
 </script>
 </head>
 
@@ -154,7 +178,7 @@ resultado.join("\n")
 <header>
 <h1>Entrada da Obra</h1>
 <div class="sub">
-Recepção simbiótica inicial do manuscrito com sensor estrutural
+Recepção simbiótica inicial do manuscrito com leitura automática
 </div>
 </header>
 
@@ -176,3 +200,26 @@ Texto da obra
 <button onclick="carregarObraManual()">
 Carregar obra no núcleo
 </button>
+
+<button onclick="executarLeituraCompleta()">
+Executar ciclo completo
+</button>
+
+<button onclick="leituraAutomaticaTotal()">
+Leitura automática total
+</button>
+
+<div id="saida" class="output">
+Aguardando entrada da obra...
+</div>
+
+</div>
+
+<div class="back" onclick="location.href='index.html'">
+← voltar ao painel principal
+</div>
+
+</div>
+
+</body>
+</html>
