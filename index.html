@@ -4,14 +4,141 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Lapidar Pensante</title>
+
+
+<style>
+
+body{
+
+margin:0;
+background:#0f001c;
+font-family:Arial;
+color:white;
+
+}
+
+
+header{
+
+background:#240046;
+padding:20px;
+
+}
+
+
+main{
+
+padding:40px;
+max-width:900px;
+margin:auto;
+
+}
+
+
+textarea{
+
+width:100%;
+height:320px;
+
+border-radius:12px;
+border:none;
+
+padding:20px;
+
+font-size:16px;
+
+outline:none;
+
+}
+
+
+button{
+
+margin-top:25px;
+
+background:#7b2cbf;
+
+border:none;
+
+color:white;
+
+font-size:18px;
+
+padding:15px 40px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+}
+
+
+button:hover{
+
+background:#9d4edd;
+
+}
+
+
+#status{
+
+margin-top:25px;
+
+font-size:18px;
+
+color:#ffd60a;
+
+}
+
+</style>
 
 </head>
 
 
 <body>
+
+
+<header>
+
+<h2>Lapidar Pensante — Engine Editorial</h2>
+
+</header>
+
+
+<main>
+
+
+<h1>Entrada da Obra</h1>
+
+
+<textarea
+
+id="entradaTexto"
+
+placeholder="Cole aqui o manuscrito"
+
+></textarea>
+
+
+<button onclick="executarLapidar()">
+
+Executar Pipeline Lapidar
+
+</button>
+
+
+<p id="status">
+
+Sistema aguardando manuscrito
+
+</p>
+
+
+</main>
 
 
 <script src="core_lp.js"></script>
@@ -32,6 +159,12 @@
 
 <script src="ponte_lp_silos.js"></script>
 
+<script src="registro_memoria.js"></script>
+
+<script src="monitor_integracao.js"></script>
+
+<script src="retroalimentacao.js"></script>
+
 <script src="orquestrador_lp.js"></script>
 
 <script src="engine_lp.js"></script>
@@ -41,19 +174,77 @@
 
 <script>
 
-window.iniciarLapidar = function(texto){
+
+function executarLapidar(){
+
+
+const texto = document
+
+.getElementById("entradaTexto")
+
+.value
+
+
+if(!texto){
+
+document
+
+.getElementById("status")
+
+.innerText = "Nenhum manuscrito inserido"
+
+return
+
+}
+
+
+document
+
+.getElementById("status")
+
+.innerText = "Pipeline iniciado..."
+
+
+try{
+
 
 SensorLeituraLP.analisarTexto(texto)
 
+
 DetectorEstadoLP.analisarEstado()
+
 
 DecisorExecucaoLP.executarDecisao()
 
+
 SupervisorPipelineLP.executarPipeline()
 
-console.log("Pipeline Lapidar executado")
+
+document
+
+.getElementById("status")
+
+.innerText = "Pipeline executado com sucesso"
+
+
+}catch(e){
+
+
+console.error(e)
+
+
+document
+
+.getElementById("status")
+
+.innerText = "Erro na execução do pipeline"
+
 
 }
+
+
+}
+
 
 </script>
 
