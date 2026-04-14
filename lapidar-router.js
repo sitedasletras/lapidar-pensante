@@ -1,132 +1,61 @@
 // ===============================
-// LAPIDAR ROUTER CENTRAL
+// LAPIDAR ROUTER CENTRAL DEFINITIVO
 // ===============================
 
-const state = {
-
-    obra: null,
-    estrutura: null,
-    pipeline: [],
-    status: "aguardando_upload"
-
-}
-
+console.log("Lapidar Router iniciado")
 
 // ===============================
-// RECEBER OBRA DO COFRE
+// CARREGAR MÓDULOS DO CÉREBRO
 // ===============================
 
-function receberObra(nomeArquivo){
-
-    state.obra = nomeArquivo
-
-    state.status = "obra_recebida"
-
-    console.log("Obra recebida:", nomeArquivo)
-
-}
+import "./engine_lp.js"
+import "./sensor_leitura_lp.js"
+import "./detector_estado_lp.js"
+import "./orquestrador_lp.js"
+import "./supervisor_pipeline.js"
 
 
 // ===============================
-// DETECTAR ESTRUTURA DA OBRA
+// CARREGAR MEMÓRIA SIMBIÓTICA
 // ===============================
 
-function detectarEstrutura(texto){
-
-    if(texto.includes("Capítulo")){
-
-        state.estrutura = "romance"
-
-    } else {
-
-        state.estrutura = "texto_curto"
-
-    }
-
-    console.log("Estrutura detectada:", state.estrutura)
-
-}
+import "./registro_memoria.js"
+import "./retroalimentacao.js"
 
 
 // ===============================
-// DEFINIR PIPELINE AUTOMÁTICO
+// CARREGAR PONTES DE EXECUÇÃO
 // ===============================
 
-function definirPipeline(){
-
-    if(state.estrutura === "romance"){
-
-        state.pipeline = [
-
-            "revisao",
-            "psicoestudo",
-            "diagramacao",
-            "traducao",
-            "audiobook",
-            "trailer"
-
-        ]
-
-    } else {
-
-        state.pipeline = [
-
-            "revisao",
-            "diagramacao"
-
-        ]
-
-    }
-
-    console.log("Pipeline definido:", state.pipeline)
-
-}
+import "./ponte_lp_diagramacao.js"
+import "./ponte_lp_okapista.js"
+import "./ponte_lp_segunda_linguas.js"
+import "./ponte_lp_silos.js"
 
 
 // ===============================
-// EXECUTAR PIPELINE
+// INICIAR PROCESSAMENTO DA OBRA
 // ===============================
 
-function executarPipeline(){
+function iniciarLapidar(texto){
 
-    state.pipeline.forEach(modulo => {
+console.log("Recebendo manuscrito...")
 
-        console.log("Executando módulo:", modulo)
+window.sensorLeitura(texto)
 
-    })
+console.log("Sensor ativado")
 
-    state.status = "pipeline_executado"
+window.detectarEstado()
 
-}
+console.log("Estado detectado")
 
+window.decidirFluxo()
 
-// ===============================
-// EXPORTAR ESTADO GLOBAL
-// ===============================
+console.log("Fluxo decidido")
 
-function mostrarEstado(){
+window.executarPipeline()
 
-    console.log(state)
-
-}
-
-
-
-// ===============================
-// SIMULAÇÃO DE EXECUÇÃO COMPLETA
-// ===============================
-
-function iniciarProcessamento(texto){
-
-    receberObra("manuscrito_autor.docx")
-
-    detectarEstrutura(texto)
-
-    definirPipeline()
-
-    executarPipeline()
-
-    mostrarEstado()
+console.log("Pipeline executado")
 
 }
 
@@ -135,4 +64,4 @@ function iniciarProcessamento(texto){
 // TESTE AUTOMÁTICO
 // ===============================
 
-iniciarProcessamento("Capítulo 1 - início da história")
+iniciarLapidar("Capítulo 1 - início da narrativa")
