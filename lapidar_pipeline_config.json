@@ -1,0 +1,20 @@
+{
+ "romance": [
+  "revisao",
+  "psicoestudo",
+  "diagramacao",
+  "traducao",
+  "audiobook",
+  "trailer"
+ ],
+ "poesia": [
+  "revisao",
+  "diagramacao",
+  "audiobook"
+ ],
+ "ensaio": [
+  "revisao",
+  "diagramacao",
+  "traducao"
+ ]
+}
