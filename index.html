@@ -4,119 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Lapidar Pensante</title>
-
-
-<style>
-
-body {
-
-background: #1a0126;
-font-family: Arial, sans-serif;
-color: white;
-
-margin: 0;
-
-}
-
-
-header {
-
-background: #2c0140;
-
-padding: 30px;
-
-text-align: center;
-
-}
-
-
-main {
-
-padding: 40px;
-
-max-width: 900px;
-
-margin: auto;
-
-}
-
-
-.card {
-
-background: #3a0152;
-
-padding: 25px;
-
-margin-bottom: 20px;
-
-border-radius: 12px;
-
-box-shadow: 0px 0px 15px black;
-
-}
-
-
-textarea {
-
-width: 100%;
-
-height: 200px;
-
-border-radius: 8px;
-
-border: none;
-
-padding: 15px;
-
-font-size: 16px;
-
-}
-
-
-button {
-
-margin-top: 20px;
-
-background: #7209b7;
-
-border: none;
-
-padding: 15px 35px;
-
-font-size: 18px;
-
-color: white;
-
-border-radius: 8px;
-
-cursor: pointer;
-
-}
-
-
-button:hover {
-
-background: #9d4edd;
-
-}
-
-
-.status {
-
-margin-top: 20px;
-
-font-size: 18px;
-
-color: #f1c40f;
-
-}
-
-</style>
 
 </head>
 
@@ -124,127 +14,48 @@ color: #f1c40f;
 <body>
 
 
-<header>
+<script src="core_lp.js"></script>
 
-<h1>🧠 Lapidar Pensante</h1>
+<script src="sensor_leitura_lp.js"></script>
 
-<p>Cérebro editorial automático do sistema Lapidar</p>
+<script src="detector_estado_lp.js"></script>
 
-</header>
+<script src="decisor_execucao_lp.js"></script>
 
+<script src="supervisor_pipeline_lp.js"></script>
 
+<script src="ponte_lp_diagramacao.js"></script>
 
-<main>
+<script src="ponte_lp_okapista.js"></script>
 
+<script src="ponte_lp_segunda_linguas.js"></script>
 
-<div class="card">
+<script src="ponte_lp_silos.js"></script>
 
-<h2>Inserir manuscrito</h2>
+<script src="orquestrador_lp.js"></script>
 
-<textarea id="manuscrito"
-placeholder="Cole aqui o texto da obra"></textarea>
+<script src="engine_lp.js"></script>
 
-<button onclick="executarLapidar()">
-
-Processar obra
-
-</button>
-
-</div>
+<script src="lapidar-router.js"></script>
 
 
+<script>
 
-<div class="card">
+window.iniciarLapidar = function(texto){
 
-<h2>Status do processamento</h2>
+SensorLeituraLP.analisarTexto(texto)
 
-<p class="status" id="status">
+DetectorEstadoLP.analisarEstado()
 
-Aguardando manuscrito...
+DecisorExecucaoLP.executarDecisao()
 
-</p>
+SupervisorPipelineLP.executarPipeline()
 
-</div>
-
-
-
-<div class="card">
-
-<h2>Pipeline editorial</h2>
-
-<ul id="pipeline">
-
-<li>—</li>
-
-</ul>
-
-</div>
-
-
-</main>
-
-
-
-<script type="module">
-
-import { iniciarLapidar }
-from "./bootstrap_lp.js"
-
-
-
-window.executarLapidar = () => {
-
-const texto = document
-.getElementById("manuscrito")
-.value
-
-
-if(!texto){
-
-document.getElementById("status")
-.innerText = "Nenhum manuscrito inserido"
-
-return
+console.log("Pipeline Lapidar executado")
 
 }
-
-
-document.getElementById("status")
-.innerText = "Processando manuscrito..."
-
-
-try {
-
-iniciarLapidar(texto)
-
-
-document.getElementById("status")
-.innerText = "Pipeline executado com sucesso"
-
-
-document.getElementById("pipeline")
-.innerHTML =
-
-"<li>Leitura estrutural</li>" +
-"<li>Detecção narrativa</li>" +
-"<li>Decisão editorial</li>" +
-"<li>Execução modular</li>"
-
-
-} catch(e){
-
-console.error(e)
-
-document.getElementById("status")
-.innerText = "Erro no processamento"
-
-}
-
-}
-
 
 </script>
-
 
 
 </body>
