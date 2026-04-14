@@ -1,181 +1,252 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>Lapidar Pensante</title>
+
 
 <style>
 
-body{
-margin:0;
-font-family:Arial;
-background:#0b1017;
-color:white;
+body {
+
+background: #1a0126;
+font-family: Arial, sans-serif;
+color: white;
+
+margin: 0;
+
 }
 
-header{
-background:#111a27;
-padding:30px;
-text-align:center;
-border-bottom:1px solid #2a3b54;
+
+header {
+
+background: #2c0140;
+
+padding: 30px;
+
+text-align: center;
+
 }
 
-h1{
-margin:0;
-font-size:32px;
+
+main {
+
+padding: 40px;
+
+max-width: 900px;
+
+margin: auto;
+
 }
 
-.sub{
-color:#aebbd3;
-margin-top:10px;
+
+.card {
+
+background: #3a0152;
+
+padding: 25px;
+
+margin-bottom: 20px;
+
+border-radius: 12px;
+
+box-shadow: 0px 0px 15px black;
+
 }
 
-.container{
-max-width:1000px;
-margin:auto;
-padding:30px;
+
+textarea {
+
+width: 100%;
+
+height: 200px;
+
+border-radius: 8px;
+
+border: none;
+
+padding: 15px;
+
+font-size: 16px;
+
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
+
+button {
+
+margin-top: 20px;
+
+background: #7209b7;
+
+border: none;
+
+padding: 15px 35px;
+
+font-size: 18px;
+
+color: white;
+
+border-radius: 8px;
+
+cursor: pointer;
+
 }
 
-.card{
-background:#121b27;
-border:1px solid #2a3b54;
-border-radius:14px;
-padding:25px;
-transition:.2s;
+
+button:hover {
+
+background: #9d4edd;
+
 }
 
-.card:hover{
-transform:scale(1.02);
-border-color:#56a8ff;
-}
 
-button{
-margin-top:15px;
-padding:12px 18px;
-border:none;
-background:#56a8ff;
-color:#09111c;
-font-weight:bold;
-border-radius:8px;
-cursor:pointer;
-}
+.status {
 
-button:hover{
-background:#7bbcff;
-}
+margin-top: 20px;
 
-footer{
-text-align:center;
-padding:20px;
-color:#7e8ea6;
+font-size: 18px;
+
+color: #f1c40f;
+
 }
 
 </style>
 
 </head>
 
+
 <body>
+
 
 <header>
 
-<h1>Lapidar Pensante</h1>
+<h1>🧠 Lapidar Pensante</h1>
 
-<div class="sub">
-Centro simbiótico de inteligência editorial do ecossistema
-</div>
+<p>Cérebro editorial automático do sistema Lapidar</p>
 
 </header>
 
-<div class="container">
 
-<div class="grid">
 
-<div class="card">
-<h3>Painel do Engine</h3>
-Executor simbiótico central do Andróide Pensador.
-<button onclick="location.href='painel_engine_lp.html'">
-Abrir módulo
-</button>
-</div>
+<main>
+
 
 <div class="card">
-<h3>Entrada da Obra</h3>
-Recepção do manuscrito para leitura simbiótica.
-<button onclick="location.href='entrada_obra.html'">
-Abrir módulo
+
+<h2>Inserir manuscrito</h2>
+
+<textarea id="manuscrito"
+placeholder="Cole aqui o texto da obra"></textarea>
+
+<button onclick="executarLapidar()">
+
+Processar obra
+
 </button>
+
 </div>
+
+
 
 <div class="card">
-<h3>Sencal</h3>
-Primeira leitura estrutural rápida da obra.
-<button onclick="location.href='sencal.html'">
-Abrir módulo
-</button>
+
+<h2>Status do processamento</h2>
+
+<p class="status" id="status">
+
+Aguardando manuscrito...
+
+</p>
+
 </div>
+
+
 
 <div class="card">
-<h3>SAI</h3>
-Validação estrutural editorial.
-<button onclick="location.href='sai.html'">
-Abrir módulo
-</button>
-</div>
 
-<div class="card">
-<h3>Terceira Leitura</h3>
-Consolidação profunda narrativa e técnica.
-<button onclick="location.href='terceira_leitura.html'">
-Abrir módulo
-</button>
-</div>
+<h2>Pipeline editorial</h2>
 
-<div class="card">
-<h3>NAS / FISA / FIIISAA</h3>
-Motor simbiótico central.
-<button onclick="location.href='nas_fisa_fiiisaa.html'">
-Abrir módulo
-</button>
-</div>
+<ul id="pipeline">
 
-<div class="card">
-<h3>Decisão de Fluxo</h3>
-Encaminhamento inteligente da obra dentro do ecossistema.
-<button onclick="location.href='decisao_fluxo.html'">
-Abrir módulo
-</button>
-</div>
+<li>—</li>
 
-<div class="card">
-<h3>Supervisão de Módulos</h3>
-Monitoramento do retorno das ferramentas.
-<button onclick="location.href='supervisao_modulos.html'">
-Abrir módulo
-</button>
-</div>
-
-<div class="card">
-<h3>Retroalimentação</h3>
-Atualização evolutiva automática do sistema.
-<button onclick="location.href='retroalimentacao.html'">
-Abrir módulo
-</button>
-</div>
+</ul>
 
 </div>
 
-</div>
 
-<footer>
-Lapidar Pensante — Núcleo simbiótico do Celeiro Literário
-</footer>
+</main>
+
+
+
+<script type="module">
+
+import { iniciarLapidar }
+from "./bootstrap_lp.js"
+
+
+
+window.executarLapidar = () => {
+
+const texto = document
+.getElementById("manuscrito")
+.value
+
+
+if(!texto){
+
+document.getElementById("status")
+.innerText = "Nenhum manuscrito inserido"
+
+return
+
+}
+
+
+document.getElementById("status")
+.innerText = "Processando manuscrito..."
+
+
+try {
+
+iniciarLapidar(texto)
+
+
+document.getElementById("status")
+.innerText = "Pipeline executado com sucesso"
+
+
+document.getElementById("pipeline")
+.innerHTML =
+
+"<li>Leitura estrutural</li>" +
+"<li>Detecção narrativa</li>" +
+"<li>Decisão editorial</li>" +
+"<li>Execução modular</li>"
+
+
+} catch(e){
+
+console.error(e)
+
+document.getElementById("status")
+.innerText = "Erro no processamento"
+
+}
+
+}
+
+
+</script>
+
+
 
 </body>
+
 </html>
